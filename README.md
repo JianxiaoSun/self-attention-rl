@@ -247,7 +247,7 @@ Based on the orientations of the attention patterns, we classify games based on 
 
 <div align='center'>
   Games with a horizontal main axis of dynamics
-  <img alt="Game classification - horizontal." src="assets/games_with_strong_horizontal_dynamics.gif"> 
+  <img alt="Game classification - horizontal." src="assets/games_with_strong_horizontal_dynamics.gif" height="265"> 
 </div>
 
 <br>
@@ -269,14 +269,14 @@ Based on the orientations of the attention patterns, we classify games based on 
 
 <div align='center'>
   Games with other dynamics - no main axis of dynamics
-  <img alt="Game classification - others." src="assets/games_with_no_main_dynamic_axis.gif"> 
+  <img alt="Game classification - others." src="assets/games_with_no_main_dynamic_axis.gif" height="150"> 
 </div>
 
 <br>
 
 <div align='center'>
   Games with other dynamics - the main axis of dynamics is far off the horizontal or vertical direction
-  <img alt="Game classification - others." src="assets/games_with_far_off_main_dynamic_axis.gif"> 
+  <img alt="Game classification - others." src="assets/games_with_far_off_main_dynamic_axis.gif" height="150"> 
 </div>
 
 <br>
