@@ -241,7 +241,7 @@ Based on the orientations of the attention patterns, we classify games based on 
 
 <br>
 
-<u>Games with a horizontal main axis of dynamics</u>
+<ins>Games with a horizontal main axis of dynamics</ins>
 
 
 <div align='center'>
@@ -251,7 +251,7 @@ Based on the orientations of the attention patterns, we classify games based on 
 
 <br>
 
-<u>Games with a vertical main axis of dynamics</u>
+<ins>Games with a vertical main axis of dynamics</ins>
 
 
 <div align='center'>
@@ -261,7 +261,7 @@ Based on the orientations of the attention patterns, we classify games based on 
 
 <br>
 
-<u>Games with other dynamics</u>
+<ins>Games with other dynamics</ins>
 
 
 <div align='center'>
@@ -293,7 +293,7 @@ The table below provides guidance when selecting agents for a particular game. T
 
 <div align='center'>
   Winning statistics by the main axis of dynamics
-  <img alt="Winning statistics by the main axis of dynamics." src="assets/alignment_of_biases.gif">
+  <img alt="Winning statistics by the main axis of dynamics." src="assets/alignment_of_biases.png">
 </div>
 
 ## Credits
