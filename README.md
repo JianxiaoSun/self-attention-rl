@@ -80,7 +80,7 @@ python -m ipykernel install --user --name=venv
 
 We used the default values from the `Stable-Baselines3 v2.0.0` for hyperparameters not listed here.
 
-| \textbf{Parameter}                     | \textbf{Value}                 |
+| **Parameter**                          | **Value**                      |
 |----------------------------------------|-------------------------------:|
 | No. of parallel environments (n\_envs) | 16                             |
 | Horizon (n\_steps)                     | 128                            |
@@ -91,13 +91,13 @@ We used the default values from the `Stable-Baselines3 v2.0.0` for hyperparamete
 | Frame stacking                         | 4                              |
 | Max no. of no-ops                      | 30                             |
 | Action repeat probability              | 0                              |
-| Learning rate                          | $2.5\times10^{-4}\times\alpha$[^1] |
-| Clipping parameter                     | $0.1\times\alpha$[^1]              |
+| Learning rate                          | $2.5\times10^{-4}\times\alpha^{*}$ |
+| Clipping parameter                     | $0.1\times\alpha$              |
 | Value function coefficient             | 1                              |
 | Entropy coefficient                    | 0.01                           |
 | Seeds                                  | 0, 1, 10, 42, 1234             |
 
-[^1]: $\alpha$ is linearly annealed from 1 to 0 over the entire training period.
+\*: $\alpha$ is linearly annealed from 1 to 0 over the entire training period.
 
 
 ### Launch training jobs
@@ -247,7 +247,7 @@ We group games that are won by each agent to spot any commonalities. <br>
 
 The data used for the interpretability study are stored in the `model` folder where the observations are saved as `.npy` files and the model checkpoints are saved as `.zip` archives. <br>
 
-The model checkpoint filenames use the same naming convention as \<Game Name\>\_\<Self-Attention Model Type\>\_\<Seed\>\_model\_checkpoint\_\<Timesteps\>\_steps.zip. <br>
+The model checkpoint filenames follow the same naming convention as \<Game Name\>\_\<Self-Attention Model Type\>\_\<Seed\>\_model\_checkpoint\_\<Timesteps\>\_steps.zip. <br>
 E.g., Pong_CWCA_42_model_checkpoint_3000000_steps.zip has the following information.
 - Game Name: Pong
 - Self-Attention Model Type: CWCA
@@ -255,6 +255,8 @@ E.g., Pong_CWCA_42_model_checkpoint_3000000_steps.zip has the following informat
 - Timesteps: 3 Million timesteps
 
 The plots from the interpretability study can be reproduced using the `interpretability_<game>.ipynb`. <br>
+
+You may obtain observation files and model checkpoints for other games [here](https://drive.google.com/drive/folders/1mBCkwr6rkPPzPIjg5KIDKDFKQYWTspL9?usp=sharing). Please [let me know](jianxiao001@e.ntu.edu.sg) if you face any issues in accessing these files.
 
 #### State Representation
 
@@ -345,6 +347,10 @@ The table below provides guidance when selecting agents for a particular game. T
 - [Gymnasium](https://gymnasium.farama.org/)
 - [rliable](https://github.com/google-research/rliable)
 - [pytorch-gradcam](https://github.com/vickyliin/gradcam_plus_plus-pytorch)
+
+## Contact
+
+jianxiao001@e.ntu.edu.sg
 
 
 
