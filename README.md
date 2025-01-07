@@ -41,6 +41,12 @@ TBA
 - Gymnasium: 0.28.1
 - OpenAI Gym: 0.26.2
 
+### Server Config
+
+Compute node
+- CPUs: 2 AMD EPYC™ 7742
+- GPUs: 8 AMD Instinct™ MI50 (32 GB)
+
 ### Installation
 
 - Create a virtual env
@@ -70,7 +76,33 @@ python -m ipykernel install --user --name=venv
 
 ## Training
 
-Launch a training run
+### Hyperparameters
+
+We used the default values from the `Stable-Baselines3 v2.0.0` for hyperparameters not listed here.
+
+| \textbf{Parameter}                     | \textbf{Value}                 |
+|----------------------------------------|-------------------------------:|
+| No. of parallel environments (n\_envs) | 16                             |
+| Horizon (n\_steps)                     | 128                            |
+| No. of epochs (n\_epochs)              | 3                              |
+| Minibatch size                         | $16\times16$                   |
+| Total timesteps (n\_timesteps)         | $1e7$                          |
+| Frame skipping                         | 4                              |
+| Frame stacking                         | 4                              |
+| Max no. of no-ops                      | 30                             |
+| Action repeat probability              | 0                              |
+| Learning rate                          | $2.5\times10^{-4}\times\alpha$[^1] |
+| Clipping parameter                     | $0.1\times\alpha$[^1]              |
+| Value function coefficient             | 1                              |
+| Entropy coefficient                    | 0.01                           |
+| Seeds                                  | 0, 1, 10, 42, 1234             |
+
+[^1]: $\alpha$ is linearly annealed from 1 to 0 over the entire training period.
+
+
+### Launch training jobs
+
+Launch a training job
 ```bash
 # activate the virtual env
 source venv/bin/activate
@@ -79,7 +111,7 @@ python -u src/train.py --algo ppo  --env PongNoFrameskip-v4 --tensorboard-log lo
 --hyperparams policy_kwargs:"dict(features_extractor_class=SelfAttnCNNPPO, features_extractor_kwargs=dict(self_attn='NA'), net_arch=[])"
 ```
 
-Launch all training runs using [PBS Pro](https://altair.com/pbs-professional)
+Launch all training jobs using [PBS Pro](https://altair.com/pbs-professional)
 ```bash
 src/launch.sh
 ```
@@ -94,9 +126,18 @@ The evaluation data is saved as `data/post_processed_results_56.pkl` and the eva
 
 We also report performance per game and collate the games that are won by each agent to see if there is any correlation between the inductive biases of the agents and the game mechanics.
 
+#### Learning curves
+
+Learning curves are smoothened using the debiased exponential moving average with a weight of 0.98 to show better distinction between agents' performances. The solid lines represent the mean performances, and the shaded regions depict the 95\% confidence intervals based on 5 runs. The term 'SAT' in the legend field is the acronym for Self-Attention Type.
+
+<div align='center'>
+  Learning curves
+  <img alt="Learning curves." src="assets/learning_curves.svg"> 
+</div>
+
 #### Performance per Game
 
-In total, 56 games are evaluated over 10 million time steps across 5 seeds with all games having the `NoFrameskip-v4` suffix in their environment IDs. The sample mean and standard error are computed using the mean evaluation score over the entire evaluation period across 5 runs. The ‘winner’ of each game is highlighted in bold based on the highest sample mean. <br>
+In total, 56 games are evaluated over 10 million time steps across 5 seeds with all games having the `NoFrameskip-v4` suffix in their environment IDs. The sample mean and standard error are computed using the mean evaluation score over the entire evaluation period across 5 runs. The **winner** of each game is highlighted in bold based on the highest sample mean. <br>
 
 Although the baseline agent (NA) has the highest number of wins, it did not win by a large margin in most cases. In addition, the combined impact of self-attention models (**33 wins**) is nontrivial and it is worth investigating how the inductive bias of each self-attention module influences the performance of the agent in different environments. <br>
 
@@ -289,7 +330,7 @@ Based on the orientations of the attention patterns, we classify games based on 
 The table below provides guidance when selecting agents for a particular game. The number represents the likelihood of winning by each agent.
 - Games with a horizontal main axis of dynamics are more likely to be won by the horizontal attention generator, i.e., the `CWCA` agent which produces horizontal attention blocks.
 - Games with a vertical main axis of dynamics are more likely to be won by the vertical attention generators, i.e., `SWA` and `CWRA` agents which produce vertical attention blocks. The combined probability of `SWA` and `CWRA` is the highest.
-- Games with more than one axis of dynamics, main axis of dynamics that is far off the horizontal or vertical direction, or no main axis of dynamics are more likely to be won by the `NA` agent. In other words, self-attention agents exhibit limited advantages in these games due to 'misalignment of biases'.
+- Games with more than one axis of dynamics, main axis of dynamics that is far off the horizontal or vertical direction, or no main axis of dynamics are more likely to be won by the `NA` agent. In other words, self-attention agents exhibit limited advantages in these games due to ''misalignment of biases''.
 
 <div align='center'>
   Winning statistics by the main axis of dynamics
