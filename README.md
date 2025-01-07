@@ -92,7 +92,7 @@ We used the default values from the `Stable-Baselines3 v2.0.0` for hyperparamete
 | Max no. of no-ops                      | 30                             |
 | Action repeat probability              | 0                              |
 | Learning rate                          | $2.5\times10^{-4}\times\alpha^{*}$ |
-| Clipping parameter                     | $0.1\times\alpha$              |
+| Clipping parameter                     | $0.1\times\alpha^{*}$              |
 | Value function coefficient             | 1                              |
 | Entropy coefficient                    | 0.01                           |
 | Seeds                                  | 0, 1, 10, 42, 1234             |
@@ -247,7 +247,8 @@ We group games that are won by each agent to spot any commonalities. <br>
 
 The data used for the interpretability study are stored in the `model` folder where the observations are saved as `.npy` files and the model checkpoints are saved as `.zip` archives. <br>
 
-The model checkpoint filenames follow the same naming convention as \<Game Name\>\_\<Self-Attention Model Type\>\_\<Seed\>\_model\_checkpoint\_\<Timesteps\>\_steps.zip. <br>
+The model checkpoint filenames follow the same naming convention as <br>
+`\<Game Name\>\_\<Self-Attention Model Type\>\_\<Seed\>\_model\_checkpoint\_\<Timesteps\>\_steps.zip.` <br>
 E.g., Pong_CWCA_42_model_checkpoint_3000000_steps.zip has the following information.
 - Game Name: Pong
 - Self-Attention Model Type: CWCA
