@@ -1,5 +1,3 @@
-[![Visits Badge](https://badges.pufler.dev/visits/JianxiaoSun/self-attention-rl)](https://github.com/JianxiaoSun/self-attention-rl)
-
 # Revisiting Self-Attention in Deep Reinforcement Learning: A Dimensional Perspective
 
 ## TL;DR
