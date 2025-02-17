@@ -1,5 +1,9 @@
 # Revisiting Self-Attention in Deep Reinforcement Learning: A Dimensional Perspective
 
+```
+![visitors](https://visitor-badge.glitch.me/badge?page_id=JianxiaoSun.893972265&left_color=green&right_color=red)
+```
+
 ## TL;DR
 
 <div align='center'>
