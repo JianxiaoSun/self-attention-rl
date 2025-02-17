@@ -1,4 +1,4 @@
-![visitors](https://visitor-badge.glitch.me/badge?page_id=JianxiaoSun.893972265&left_color=green&right_color=red)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=JianxiaoSun.self-attention-rl&left_color=green&right_color=red)
 
 # Revisiting Self-Attention in Deep Reinforcement Learning: A Dimensional Perspective
 
